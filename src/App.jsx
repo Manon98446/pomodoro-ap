@@ -10,9 +10,9 @@ function App() {
       <div className="timer">
        <Timer/>
       </div>
-      <p className="read-the-docs">
+      <footer>
         
-      </p>
+      </footer>
     </>
   )
 }
