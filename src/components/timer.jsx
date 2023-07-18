@@ -43,13 +43,14 @@ export default function Timer() {
     },[secondsTimer]);
 
     return(
-        <section>
-            <div className="timer">
-                {formatTime(secondsTimer)} 
+        <section className="timerContainer">
+            <div className="timer" id="clock">
+                <span id="countdown">{formatTime(secondsTimer)} </span>
+                <StartPause timerActive={timerActive} setTimerActive={setTimerActive}id="start"/>
             </div>
-            <div className="buttons">
-                <StartPause timerActive={timerActive} setTimerActive={setTimerActive}/>
-                <ResetTimerButton resetTimer={ResetTimer}/>
+            <div className="buttons" id="controls">
+                
+                <ResetTimerButton resetTimer={ResetTimer} id="reset"/>
                 <InDecrement timerActive={timerActive} setSecondsTimer={setSecondsTimer} secondsTimer={secondsTimer}/>
             </div>
             

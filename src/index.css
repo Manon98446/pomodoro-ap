@@ -13,7 +13,106 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+* {
+  box-sizing: border-box;
+  outline: none;
+  user-select: none;
+}
+body {
+  align-items: center;
+  background: radial-gradient(ellipse at center, rgba(255,179,206,0) 0%, rgba(255,180,199,0) 43%, rgba(255,181,189,0.43) 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  display: flex;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffb3ce', endColorstr='#6effb5bd', GradientType=1);
+  flex-direction: column;
+  font-family: "Open Sans", sans-serif;
+  justify-content: center;
+  min-width: 184px;
+  overflow-x: hidden;
+  transition: background-color .2s;
+}
+#clock {
+  background: url(https://joeweaver.me/codepenassets/freecodecamp/challenges/build-a-pomodoro-clock/bg.png) no-repeat center center;
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*margin-bottom: -6.25vw;*/
+  box-sizing: border-box;
+  /*padding: 40vw 30vw;*/
+  box-sizing: initial;
+  @media all and (min-width: 512px){
+    /*margin-bottom: -32px;*/
+    padding: 204px 200px;
+  }
+  @media all and (max-width: 184px){
+    margin-bottom: -20px;
+    margin-bottom: -11.5px;
+    padding: 73px 0;
+  }
+}
 
+#countdown {
+  color: #ff778d;
+  display: flex;
+  justify-content: center;
+  font-size: 43px;
+  font-weight: 600;
+  line-height: 43px;
+  @media all and (max-width: 512px){
+    font-size: 8.4vw;
+    line-height: 8.4vw;
+  }
+  @media all and (max-width: 184px){
+    font-size: 15.4px;
+    line-height: 15.4px;
+  }
+}
+#start, #reset {
+  white-space: nowrap;
+}
+#start {
+    font-size: 77%;
+    top: -1px;
+  &:hover {
+    color: darken(#FF6292);
+  }
+}
+
+
+
+#controls {
+  align-items: center;
+  display: flex;
+  color: #FF6292;
+  flex-direction: column;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  margin-top: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  justify-content: center;
+}
+
+.timerContainer {
+  display: flex;
+  flex-direction:row;
+  box-sizing: border-box;
+  @media all and (max-width: 512px){
+    font-size: 8.4vw;
+    line-height: 8.4vw;
+    flex-direction: column;
+  }
+  @media all and (max-width: 184px){
+    font-size: 15.4px;
+    line-height: 15.4px;
+    flex-direction: column;;
+  }
+}
+
+/*start initial*/
 a {
   font-weight: 500;
   color: #646cff;
@@ -34,18 +133,28 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: #f74a7e;
+  text-align: center;
 }
 
 button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: transparent;
   cursor: pointer;
   transition: border-color 0.25s;
+  align-items: center;
+  display: flex;
+  color: #FF6292;
+  flex-direction: column;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 15px;
+  margin-top: 5px;
+  text-align: center;
+  text-transform: uppercase;
 }
 button:hover {
   border-color: #646cff;
@@ -63,7 +172,5 @@ button:focus-visible {
   a:hover {
     color: #747bff;
   }
-  button {
-    background-color: #f9f9f9;
-  }
 }
+

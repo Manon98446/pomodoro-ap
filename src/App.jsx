@@ -7,12 +7,10 @@ function App() {
     <>
       
       <h1>Pomodoro Timer</h1>
-      <div className="timer">
+      <div>
        <Timer/>
       </div>
-      <footer>
-        
-      </footer>
+      
     </>
   )
 }
