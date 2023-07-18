@@ -71,6 +71,7 @@ body {
 }
 #start, #reset {
   white-space: nowrap;
+  text-transform: uppercase;
 }
 #start {
     font-size: 77%;
@@ -80,7 +81,13 @@ body {
   }
 }
 
-
+.chooseTimer{
+  justify-content: center;
+  display: flex;
+  button{
+    text-transform: capitalize;
+  }
+}
 
 #controls {
   align-items: center;
@@ -154,7 +161,6 @@ button {
   line-height: 15px;
   margin-top: 5px;
   text-align: center;
-  text-transform: uppercase;
 }
 button:hover {
   border-color: #646cff;
