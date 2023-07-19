@@ -3,8 +3,7 @@
 let interval = null;
 
 self.onmessage = function(e) {
-  if (e.data === "start" && !interval) {
-    
+  if (e.data === "start" && !interval) {    
     tick();
   }else if(e.data === "stop"){
     clearTimeout(interval);

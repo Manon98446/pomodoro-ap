@@ -47,6 +47,7 @@ export default function Timer() {
         if(secondsTimer === 0 ){
             const audio = new Audio(soundFile);
             audio.play();
+            setTimerActive(false);
         }
         updateTitle(Math.floor(secondsTimer/60), (secondsTimer%60))
     },[secondsTimer]);
