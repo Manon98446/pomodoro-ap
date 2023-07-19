@@ -7,6 +7,7 @@ import LongBreak from "./longBreak";
 import SetWorkTimer from "./setWork";
 import soundFile from "../assets/Moo-sound-effect-2.mp3";
 
+
 export default function Timer() {
     const [secondsTimer, setSecondsTimer] = useState(1500);
     const [timerActive, setTimerActive] = useState(false);
@@ -26,8 +27,8 @@ export default function Timer() {
     const updateTitle = (minutes, seconds) => {
         document.title = minutes + ':' + seconds + ' - ' + 'Pomodoro';
     }
-    //starting timer when it gets activated
-    useEffect(() => {
+    //THIS ONE IS WORKING BUT DELAYED starting timer when it gets activated
+    /*useEffect(() => {
         let interval = null;
         if (timerActive && secondsTimer > 0){
             interval = setInterval(() => {
@@ -38,8 +39,8 @@ export default function Timer() {
             clearInterval(interval)
         };
         return () => clearInterval(interval);
-    }, [timerActive, secondsTimer]);
-    
+    }, [timerActive, secondsTimer]);*/  
+  
     // useEffect for the secondsTimer, when it reaches 0, the window will display an alert and the timer will be unactive
     //second part is from the function above to dynamically change the title and display the remaining time 
     useEffect(() => {
@@ -60,7 +61,7 @@ export default function Timer() {
             <div className="timerContainer">
                 <div className="timer" id="clock">
                     <span id="countdown">{formatTime(secondsTimer)} </span>
-                    <StartPause timerActive={timerActive} setTimerActive={setTimerActive}id="start"/>
+                    <StartPause setSecondsTimer={setSecondsTimer} secondsTimer={secondsTimer} timerActive={timerActive} setTimerActive={setTimerActive}id="start"/>
                 </div>
                 <div className="buttons" id="controls">
                     
