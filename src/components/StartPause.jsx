@@ -4,7 +4,7 @@ const workerURL = new URL('./worker.js', import.meta.url).toString();
 const myWorker = new Worker(workerURL);
 
 
-export default function StartPause({setSecondsTimer, timerActive, setTimerActive}){
+export default function StartPause({secondsTimer, setSecondsTimer, timerActive, setTimerActive}){
     const prevSecondsRef = useRef()
     
     
@@ -15,9 +15,7 @@ export default function StartPause({setSecondsTimer, timerActive, setTimerActive
         }
         else{
             
-            myWorker.postMessage("stop");
-            prevSecondsRef.current = null; 
-            
+            myWorker.postMessage("stop");            
         }
         function handleMessage (e) {
             if (e.data === "tick") {
