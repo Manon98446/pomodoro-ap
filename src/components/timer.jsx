@@ -13,7 +13,7 @@ import "./modal.css";
 export default function Timer() {
     const [secondsTimer, setSecondsTimer] = useState(1500);
     const [timerActive, setTimerActive] = useState(false);
-    const [isModalOpen, setIsModalOpen] =useState(true)
+    const [isModalOpen, setIsModalOpen] =useState(false)
     //reset
     function ResetTimer(){
         setTimerActive(false); 
