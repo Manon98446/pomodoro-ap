@@ -6,12 +6,14 @@ import ShortBreak from "./shortBreak";
 import LongBreak from "./longBreak";
 import SetWorkTimer from "./setWork";
 import soundFile from "../assets/Moo-sound-effect-2.mp3";
+import ReactModal from "react-modal";
+import "./modal.css";
 
 
 export default function Timer() {
     const [secondsTimer, setSecondsTimer] = useState(1500);
     const [timerActive, setTimerActive] = useState(false);
-    
+    const [isModalOpen, setIsModalOpen] =useState(true)
     //reset
     function ResetTimer(){
         setTimerActive(false); 
@@ -27,6 +29,21 @@ export default function Timer() {
     const updateTitle = (minutes, seconds) => {
         document.title = minutes + ':' + seconds + ' - ' + 'Pomodoro';
     }
+    //modals
+    const handleStartAnotherRound = () => {
+        setSecondsTimer(1500);
+        setTimerActive(true);
+        setIsModalOpen(false); // Close the modal
+        // Additional logic if needed
+    };
+    
+      const handleTakeABreak = () => {
+        setSecondsTimer(300);
+        setTimerActive(true);
+        setIsModalOpen(false); // Close the modal
+        // Additional logic if needed
+    };
+    
     //THIS ONE IS WORKING BUT DELAYED starting timer when it gets activated
     /*useEffect(() => {
         let interval = null;
@@ -48,6 +65,7 @@ export default function Timer() {
             const audio = new Audio(soundFile);
             audio.play();
             setTimerActive(false);
+            setIsModalOpen(true);
         }
         updateTitle(Math.floor(secondsTimer/60), (secondsTimer%60))
     },[secondsTimer]);
@@ -69,6 +87,22 @@ export default function Timer() {
                     <ResetTimerButton resetTimer={ResetTimer} id="reset"/>
                     <InDecrement timerActive={timerActive} setSecondsTimer={setSecondsTimer} secondsTimer={secondsTimer}/>
                 </div>
+            </div>
+            <div className="modalBreak">
+                <ReactModal 
+                    isOpen={isModalOpen} 
+                    className="modal-content" // Apply the modal-content class
+                    overlayClassName="modal-overlay" // Apply the modal-overlay class
+                    ariaHideApp={false} //To avoid accessibility issues when the modal is on 
+                >
+                    <h2>Time's up!</h2>
+                    <p>What would you like to do next?</p>
+                    <div className="modal-buttons">
+                        <button onClick={() => setIsModalOpen(false)}>Close</button>
+                        <button onClick={handleStartAnotherRound}>Start Another Round</button>
+                        <button onClick={handleTakeABreak}>Take a Break</button>
+                    </div> {/*modal content*/}
+                </ReactModal>
             </div>
             
         </section>
