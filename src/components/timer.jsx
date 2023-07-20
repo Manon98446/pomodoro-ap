@@ -7,12 +7,13 @@ import LongBreak from "./longBreak";
 import SetWorkTimer from "./setWork";
 import soundFile from "../assets/Moo-sound-effect-2.mp3";
 import ReactModal from "react-modal";
+import "./modal.css";
 
 
 export default function Timer() {
     const [secondsTimer, setSecondsTimer] = useState(1500);
     const [timerActive, setTimerActive] = useState(false);
-    const [isModalOpen, setIsModalOpen] =useState(false)
+    const [isModalOpen, setIsModalOpen] =useState(true)
     //reset
     function ResetTimer(){
         setTimerActive(false); 
@@ -89,7 +90,11 @@ export default function Timer() {
             </div>
             <div className="modalBreak">
                 <ReactModal 
-                    isOpen={isModalOpen} >
+                    isOpen={isModalOpen} 
+                    className="modal-content" // Apply the modal-content class
+                    overlayClassName="modal-overlay" // Apply the modal-overlay class
+                    ariaHideApp={false} //To avoid accessibility issues when the modal is on 
+                >
                     <h2>Time's up!</h2>
                     <p>What would you like to do next?</p>
                     <div className="modal-buttons">
